@@ -1,0 +1,9 @@
+{
+    "dependencies": {
+        "aws-sdk": "*",
+        "fs":"*",
+        "through":"*",
+        "ejs": "*",
+        "express":"*"
+    }
+}
