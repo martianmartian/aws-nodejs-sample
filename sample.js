@@ -17,32 +17,32 @@ app.set('port', process.env.PORT || 3000);
 //app.set('views', __dirname + '/views');
 
 app.get('/', function(req, res){
-    
+    res.render('index.html');
 
-    var numBytes = 0;
-    var address_keyName = 'helloworld.jpg';
-    var stream = fs.createReadStream(address_keyName);
-
-
-    stream.on('open',function(data){
-      stream.pipe(res);
-      res.render('index.html');
-      //res.sendStatus(data)
-    })
-
-    stream.on('error',function(err){
-      res.end(err);
-    })
+    // var numBytes = 0;
+    // var address_keyName = 'helloworld.jpg';
+    // var stream = fs.createReadStream(address_keyName);
 
 
+    // stream.on('open',function(data){
+    //   stream.pipe(res);
+    //   res.render('index.html');
+    //   //res.sendStatus(data)
+    // })
+
+    // stream.on('error',function(err){
+    //   res.end(err);
+    // })
 
 
-    stream.pipe(through(function(data) {
-      this.queue(data);
-      numBytes += data.length;
-      console.log(numBytes, 'bytes written');
-    })
-    );
+
+
+    // stream.pipe(through(function(data) {
+    //   this.queue(data);
+    //   numBytes += data.length;
+    //   console.log(numBytes, 'bytes written');
+    // })
+    // );
 
 
     // var bucketName = "langtimeusers"

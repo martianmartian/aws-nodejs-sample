@@ -3,6 +3,7 @@
 <head>
   <title>Awesome</title>
   <script type="text/javascript" src="jquery-1.11.1.min.js"></script>
+  <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
 </head>
 <body>
 
@@ -14,17 +15,29 @@
   var preview = document.querySelector('img');
   var file    = document.querySelector('input[type=file]').files[0];
   var reader  = new FileReader();
+  var source= new Firebase("https://langtime1.firebaseio.com")
+  
+  var what;
+  source.on("child_added", function(snapshot) {
+  what=snapshot.val();
+  preview.src = what
+  });
+  
 
-  reader.onloadend = function () {
-    preview.src = reader.result;
-  }
+  // reader.onloadend = function () {
+  //   preview.src = reader.result;
+  //   // source.update({what:reader.result});
+  // }
 
-  if (file) {
-    reader.readAsDataURL(file);
-  } else {
-    preview.src = "";
-  }
+  // if (file) {
+  //   reader.readAsDataURL(file);
+  // } else {
+  //   preview.src = "";
+  // }
+
 }
+
+previewFile()
 </script>
 </body>
 </html>
