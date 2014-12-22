@@ -15,6 +15,9 @@ app.set('port', process.env.PORT || 3000);
 // //var bucketName = 'node-sdk-sample-' + uuid.v4();
 
 //app.set('views', __dirname + '/views');
+app.get('/gallery',function(req,res){
+  res.render('gallery.html');
+});
 
 app.get('/', function(req, res){
     res.render('index.html');
@@ -61,6 +64,8 @@ app.get('/', function(req, res){
     // });
 
 });
+
+
 app.listen(app.get('port'));
 
 

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Still Awesome</title>
+  <script src="https://cdn.firebase.com/js/client/2.0.6/firebase.js"></script>
+</head>
+<body>
+<div id="gallery"></div>
+<img src="" height="200">
+<button id="ready">Ready?</button>
+
+<script type="text/javascript">
+  function viewFile() {
+    var preview = document.getElementById('img');
+    var source= new Firebase("https://langtime1.firebaseio.com")
+    
+    var what;
+    source.on("value", function(snapshot) {
+      snapshot.forEach(function(snap){
+        console.log(snap.val())
+        img="<img src='"+snap.val()+"' height=200 >"
+        document.getElementById('gallery').innerHTML += img;
+      })
+    });
+  }
+
+    viewFile()
+
+
+</script>
+</body>
+</html>
